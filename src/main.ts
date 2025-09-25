@@ -22,6 +22,7 @@ async function bootstrap() {
     .setDescription('Manufacturing Execution System Backend API 문서')
     .setVersion('1.0')
     .addTag('API/COMPANIES', '사업장 정보 관리')
+    .addTag('API/CUSTOMERS', '거래처 정보 관리')
     .addTag('API/MENUS', '메뉴 관리')
     .addTag('API/USERS', '사용자 관리')
     .addTag('API/AUTH', '인증 관리')

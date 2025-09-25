@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { MenusModule } from './menus/menus.module';
 import { CompaniesModule } from './api/companies/companies.module';
+import { CustomersModule } from './api/customers/customers.module';
 
 @Module({
   imports: [
@@ -23,12 +24,13 @@ import { CompaniesModule } from './api/companies/companies.module';
       database: process.env.DB_DATABASE || 'mes-be',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: process.env.NODE_ENV !== 'production',
-      logging: process.env.NODE_ENV === 'development',
+      logging: false,
     }),
     // AuthModule,
     // UsersModule,
     MenusModule,
     CompaniesModule,
+    CustomersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
