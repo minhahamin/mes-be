@@ -8,6 +8,8 @@ import { UsersModule } from './users/users.module';
 import { MenusModule } from './menus/menus.module';
 import { CompaniesModule } from './api/companies/companies.module';
 import { CustomersModule } from './api/customers/customers.module';
+import { EmployeesModule } from './api/employees/employees.module';
+import { ProductsModule } from './api/products/products.module';
 
 @Module({
   imports: [
@@ -31,6 +33,8 @@ import { CustomersModule } from './api/customers/customers.module';
     MenusModule,
     CompaniesModule,
     CustomersModule,
+    EmployeesModule,
+    ProductsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
