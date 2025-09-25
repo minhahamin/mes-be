@@ -1,119 +1,247 @@
 # MES Backend API
 
-NestJS를 사용한 MES(Manufacturing Execution System) 백엔드 API입니다.
+Manufacturing Execution System (MES) 백엔드 API 서버입니다.
 
-## 🚀 시작하기
+## 🚀 기술 스택
 
-### 필수 요구사항
-
-- Node.js (v18 이상)
-- MySQL (v8.0 이상)
-- npm 또는 yarn
-
-### 설치 및 실행
-
-1. 의존성 설치
-```bash
-npm install
-```
-
-2. 환경 변수 설정
-`.env` 파일을 생성하고 다음 내용을 추가하세요:
-
-```env
-# Database
-DB_HOST=localhost
-DB_PORT=3306
-DB_USERNAME=root
-DB_PASSWORD=your_password
-DB_DATABASE=mes_db
-
-# JWT
-JWT_SECRET=your-secret-key-here
-JWT_EXPIRES_IN=24h
-
-# Server
-PORT=3000
-NODE_ENV=development
-```
-
-3. 데이터베이스 생성
-MySQL에서 `mes_db` 데이터베이스를 생성하세요.
-
-4. 애플리케이션 실행
-```bash
-# 개발 모드
-npm run start:dev
-
-# 프로덕션 모드
-npm run build
-npm run start:prod
-```
-
-## 📚 API 엔드포인트
-
-### 인증 (Auth)
-- `POST /auth/register` - 회원가입
-- `POST /auth/login` - 로그인
-- `GET /auth/profile` - 프로필 조회 (인증 필요)
-
-### 사용자 (Users)
-- `GET /users` - 모든 사용자 조회
-- `GET /users/:id` - 특정 사용자 조회
-- `POST /users` - 사용자 생성
-- `PATCH /users/:id` - 사용자 정보 수정
-- `DELETE /users/:id` - 사용자 삭제
-
-### 기타
-- `GET /` - API 상태 확인
-- `GET /health` - 헬스 체크
-
-## 🛠️ 개발 도구
-
-### 스크립트
-- `npm run start:dev` - 개발 서버 실행
-- `npm run build` - 프로덕션 빌드
-- `npm run test` - 테스트 실행
-- `npm run lint` - 코드 린팅
-- `npm run format` - 코드 포맷팅
-
-### 기술 스택
 - **Framework**: NestJS
-- **Database**: MySQL + TypeORM
-- **Authentication**: JWT + Passport
-- **Validation**: class-validator
+- **Database**: PostgreSQL
+- **ORM**: TypeORM
 - **Language**: TypeScript
+- **Documentation**: Swagger
+- **Validation**: class-validator, class-transformer
 
 ## 📁 프로젝트 구조
 
 ```
 src/
-├── auth/                 # 인증 모듈
-│   ├── dto/             # 데이터 전송 객체
-│   ├── guards/          # 인증 가드
-│   ├── strategies/      # Passport 전략
-│   └── ...
-├── users/               # 사용자 모듈
-│   ├── dto/
-│   ├── entities/        # 데이터베이스 엔티티
-│   └── ...
-├── common/              # 공통 모듈
-│   ├── decorators/      # 커스텀 데코레이터
-│   ├── filters/         # 예외 필터
-│   └── ...
-├── config/              # 설정 파일
-├── app.module.ts        # 루트 모듈
-└── main.ts             # 애플리케이션 진입점
+├── api/                    # API 모듈들
+│   ├── companies/         # 사업장 정보 관리
+│   │   ├── entities/
+│   │   ├── dto/
+│   │   ├── controllers/
+│   │   └── services/
+│   ├── customers/         # 거래처 정보 관리
+│   │   ├── entities/
+│   │   ├── dto/
+│   │   ├── controllers/
+│   │   └── services/
+│   ├── employees/         # 직원 정보 관리
+│   │   ├── entities/
+│   │   ├── dto/
+│   │   ├── controllers/
+│   │   └── services/
+│   └── products/          # 품목 정보 관리
+│       ├── entities/
+│       ├── dto/
+│       ├── controllers/
+│       └── services/
+├── menus/                 # 메뉴 관리
+│   ├── entities/
+│   └── services/
+├── users/                 # 사용자 관리
+├── auth/                  # 인증 관리
+└── migrations/            # 데이터베이스 마이그레이션
 ```
 
-## 🔧 설정
+## 🛠️ 설치 및 실행
 
-### 데이터베이스
-TypeORM을 사용하여 MySQL과 연결됩니다. `src/config/database.config.ts`에서 데이터베이스 설정을 확인할 수 있습니다.
+### 1. 의존성 설치
+```bash
+npm install
+```
 
-### 인증
-JWT 토큰을 사용한 인증 시스템이 구현되어 있습니다. 토큰은 Authorization 헤더에 Bearer 토큰으로 전송해야 합니다.
+### 2. 환경 변수 설정
+`.env` 파일을 생성하고 다음 내용을 추가하세요:
 
-## 📝 라이선스
+```env
+# 데이터베이스 설정
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=postgres
+DB_PASSWORD=1234
+DB_DATABASE=mes-be
 
-이 프로젝트는 MIT 라이선스 하에 있습니다.
+# JWT 설정
+JWT_SECRET=your-secret-key
+
+# 서버 설정
+PORT=3000
+NODE_ENV=development
+```
+
+### 3. 데이터베이스 설정
+PostgreSQL에서 데이터베이스를 생성하세요:
+
+```sql
+CREATE DATABASE "mes-be";
+```
+
+### 4. 서버 실행
+```bash
+# 개발 모드
+npm run start:dev
+
+# 프로덕션 모드
+npm run start:prod
+```
+
+## 📚 API 문서
+
+서버 실행 후 다음 URL에서 Swagger API 문서를 확인할 수 있습니다:
+
+- **Swagger UI**: http://localhost:3000/api
+
+## 🔧 주요 기능
+
+### 1. 사업장 정보 관리 (Companies)
+- **POST** `/companies` - 사업장 등록
+- **GET** `/companies` - 사업장 목록 조회
+- **GET** `/companies/:id` - 사업장 상세 조회
+- **PATCH** `/companies/:id` - 사업장 정보 수정
+- **DELETE** `/companies/:id` - 사업장 삭제
+
+### 2. 거래처 정보 관리 (Customers)
+- **POST** `/customers` - 거래처 등록
+- **GET** `/customers` - 거래처 목록 조회
+- **GET** `/customers/:id` - 거래처 상세 조회
+- **PATCH** `/customers/:id` - 거래처 정보 수정
+- **DELETE** `/customers/:id` - 거래처 삭제
+
+### 3. 직원 정보 관리 (Employees)
+- **POST** `/employees` - 직원 등록 (직원코드 자동생성: EMP001, EMP002...)
+- **GET** `/employees` - 직원 목록 조회
+- **GET** `/employees/:id` - 직원 상세 조회
+- **PATCH** `/employees/:id` - 직원 정보 수정
+- **DELETE** `/employees/:id` - 직원 삭제
+
+### 4. 품목 정보 관리 (Products)
+- **POST** `/products` - 품목 등록 (품목코드 자동생성: PROD001, PROD002...)
+- **GET** `/products` - 품목 목록 조회
+- **GET** `/products/:id` - 품목 상세 조회
+- **PATCH** `/products/:id` - 품목 정보 수정
+- **DELETE** `/products/:id` - 품목 삭제
+- **GET** `/products/low-stock` - 재고 부족 품목 조회
+- **GET** `/products/category/:category` - 카테고리별 품목 조회
+- **GET** `/products/supplier/:supplier` - 공급업체별 품목 조회
+
+### 5. 메뉴 관리 (Menus)
+- **GET** `/menus/hierarchy` - 계층적 메뉴 구조 조회
+
+## 📋 데이터 모델
+
+### 사업장 (Company)
+- `id`: 고유 ID
+- `companyName`: 회사명
+- `businessNumber`: 사업자번호 (고유)
+- `ceoName`: 대표자명
+- `address`: 주소
+- `phone`: 전화번호
+- `email`: 이메일
+- `industry`: 업종
+- `establishedDate`: 설립일
+
+### 거래처 (Customer)
+- `id`: 고유 ID
+- `customerName`: 거래처명 (고유)
+- `contactPerson`: 담당자명
+- `phone`: 전화번호
+- `email`: 이메일
+- `address`: 주소
+- `businessNumber`: 사업자번호 (고유)
+- `industry`: 업종
+- `creditLimit`: 신용한도
+- `paymentTerms`: 결제 조건
+- `registrationDate`: 등록일
+
+### 직원 (Employee)
+- `id`: 고유 ID
+- `employeeId`: 직원코드 (자동생성, 고유)
+- `name`: 직원명
+- `department`: 부서
+- `position`: 직급
+- `phone`: 전화번호
+- `email`: 이메일 (고유)
+- `hireDate`: 입사일
+- `salary`: 급여
+- `status`: 상태 (active/inactive/resigned)
+- `address`: 주소
+- `emergencyContact`: 비상연락처
+- `emergencyPhone`: 비상연락처 전화번호
+
+### 품목 (Product)
+- `id`: 고유 ID
+- `productCode`: 품목코드 (자동생성, 고유)
+- `productName`: 품목명
+- `category`: 카테고리
+- `description`: 품목 설명
+- `unitPrice`: 단가
+- `cost`: 원가
+- `stock`: 재고 수량
+- `minStock`: 최소 재고
+- `maxStock`: 최대 재고
+- `supplier`: 공급업체
+- `status`: 상태 (active/inactive/discontinued)
+
+## 🔍 유효성 검사
+
+모든 API는 다음과 같은 유효성 검사를 수행합니다:
+
+- **이메일**: 올바른 이메일 형식 검증
+- **전화번호**: 010-0000-0000 형식 검증
+- **사업자번호**: 000-00-00000 형식 검증
+- **날짜**: 올바른 날짜 형식 검증
+- **숫자**: 양수 및 숫자 형식 검증
+- **필수 필드**: 필수 입력 필드 검증
+
+## 🚦 상태 코드
+
+- **200**: 성공
+- **201**: 생성 성공
+- **400**: 잘못된 요청
+- **404**: 리소스를 찾을 수 없음
+- **409**: 중복 데이터 (이미 등록된 정보)
+
+## 🛡️ 보안
+
+- CORS 활성화
+- 전역 유효성 검사 파이프 적용
+- JWT 기반 인증 (준비됨)
+- 비밀번호 해싱 (bcrypt)
+
+## 📝 개발 스크립트
+
+```bash
+# 개발 서버 실행
+npm run start:dev
+
+# 프로덕션 빌드
+npm run build
+
+# 프로덕션 서버 실행
+npm run start:prod
+
+# 린팅
+npm run lint
+
+# 코드 포맷팅
+npm run format
+
+# 테스트
+npm run test
+```
+
+## 🔄 자동증가 기능
+
+- **직원코드**: EMP001, EMP002, EMP003... (자동생성)
+- **품목코드**: PROD001, PROD002, PROD003... (자동생성)
+
+등록 시 코드를 입력할 필요 없이 자동으로 생성됩니다.
+
+## 📞 지원
+
+문제가 발생하거나 문의사항이 있으시면 이슈를 등록해주세요.
+
+---
+
+**MES Backend API v1.0** - Manufacturing Execution System
