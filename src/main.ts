@@ -26,6 +26,8 @@ async function bootstrap() {
     .addTag('API/EMPLOYEES', '직원 정보 관리')
     .addTag('API/PRODUCTS', '품목 정보 관리')
     .addTag('API/ORDERS', '수주 관리')
+    .addTag('API/PURCHASES', '발주 관리')
+    .addTag('API/RECEIPTS', '입고 관리')
     .addTag('API/MENUS', '메뉴 관리')
     .addTag('API/USERS', '사용자 관리')
     .addTag('API/AUTH', '인증 관리')

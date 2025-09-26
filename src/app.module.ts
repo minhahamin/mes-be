@@ -11,6 +11,8 @@ import { CustomersModule } from './api/customers/customers.module';
 import { EmployeesModule } from './api/employees/employees.module';
 import { ProductsModule } from './api/products/products.module';
 import { OrdersModule } from './api/orders/orders.module';
+import { PurchasesModule } from './api/purchases/purchases.module';
+import { ReceiptsModule } from './api/receipts/receipts.module';
 
 @Module({
   imports: [
@@ -37,6 +39,8 @@ import { OrdersModule } from './api/orders/orders.module';
     EmployeesModule,
     ProductsModule,
     OrdersModule,
+    PurchasesModule,
+    ReceiptsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
