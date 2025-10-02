@@ -51,26 +51,32 @@ export class CreateProductDto {
   @ApiProperty({
     description: '재고 수량',
     example: 150,
-    type: 'number'
+    type: 'number',
+    required: false
   })
+  @IsOptional()
   @IsNumber({}, { message: '재고 수량은 숫자여야 합니다.' })
-  stock: number;
+  stock?: number;
 
   @ApiProperty({
     description: '최소 재고',
     example: 20,
-    type: 'number'
+    type: 'number',
+    required: false
   })
+  @IsOptional()
   @IsNumber({}, { message: '최소 재고는 숫자여야 합니다.' })
-  minStock: number;
+  minStock?: number;
 
   @ApiProperty({
     description: '최대 재고',
     example: 200,
-    type: 'number'
+    type: 'number',
+    required: false
   })
+  @IsOptional()
   @IsNumber({}, { message: '최대 재고는 숫자여야 합니다.' })
-  maxStock: number;
+  maxStock?: number;
 
   @ApiProperty({
     description: '공급업체',
