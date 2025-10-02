@@ -40,6 +40,7 @@ import { InventoryStatusModule } from './api/inventory-status/inventory-status.m
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true, // 프로덕션에서도 자동 테이블 생성 (포트폴리오용)
       logging: false,
+      ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
     }),
     // AuthModule,
     // UsersModule,
