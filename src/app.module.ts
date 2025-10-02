@@ -17,6 +17,7 @@ import { ShipmentsModule } from './api/shipments/shipments.module';
 import { DeliveriesModule } from './api/deliveries/deliveries.module';
 import { ProductionPlansModule } from './api/production-plans/production-plans.module';
 import { WorkOrdersModule } from './api/work-orders/work-orders.module';
+import { ProductionStatusModule } from './api/production-status/production-status.module';
 
 @Module({
   imports: [
@@ -49,6 +50,7 @@ import { WorkOrdersModule } from './api/work-orders/work-orders.module';
     DeliveriesModule,
     ProductionPlansModule,
     WorkOrdersModule,
+    ProductionStatusModule,
   ],
   controllers: [AppController],
   providers: [AppService],
