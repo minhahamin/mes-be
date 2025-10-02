@@ -2,6 +2,8 @@
 
 Manufacturing Execution System (MES) 백엔드 API 서버입니다.
 
+- 배포 : https://mes-be-production.up.railway.app/
+
 ## 🚀 기술 스택
 
 - **Framework**: NestJS 10.x
