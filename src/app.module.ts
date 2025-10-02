@@ -15,6 +15,7 @@ import { PurchasesModule } from './api/purchases/purchases.module';
 import { ReceiptsModule } from './api/receipts/receipts.module';
 import { ShipmentsModule } from './api/shipments/shipments.module';
 import { DeliveriesModule } from './api/deliveries/deliveries.module';
+import { ProductionPlansModule } from './api/production-plans/production-plans.module';
 
 @Module({
   imports: [
@@ -45,6 +46,7 @@ import { DeliveriesModule } from './api/deliveries/deliveries.module';
     ReceiptsModule,
     ShipmentsModule,
     DeliveriesModule,
+    ProductionPlansModule,
   ],
   controllers: [AppController],
   providers: [AppService],
