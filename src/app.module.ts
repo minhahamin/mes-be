@@ -19,6 +19,7 @@ import { ProductionPlansModule } from './api/production-plans/production-plans.m
 import { WorkOrdersModule } from './api/work-orders/work-orders.module';
 import { ProductionStatusModule } from './api/production-status/production-status.module';
 import { PurchaseReceiptStatusModule } from './api/purchase-receipt-status/purchase-receipt-status.module';
+import { QualityInspectionsModule } from './api/quality-inspections/quality-inspections.module';
 
 @Module({
   imports: [
@@ -53,6 +54,7 @@ import { PurchaseReceiptStatusModule } from './api/purchase-receipt-status/purch
     WorkOrdersModule,
     ProductionStatusModule,
     PurchaseReceiptStatusModule,
+    QualityInspectionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
