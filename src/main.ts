@@ -36,6 +36,8 @@ async function bootstrap() {
     .addTag('API/PURCHASE-RECEIPT-STATUS', '발주/입고 현황 조회')
     .addTag('API/QUALITY-INSPECTIONS', '품질검사 관리')
     .addTag('API/CLAIMS', '클레임 관리')
+    .addTag('API/INVENTORY', '재고 조정 관리')
+    .addTag('API/INVENTORY-STATUS', '재고 현황 조회')
     .addTag('API/MENUS', '메뉴 관리')
     .addTag('API/USERS', '사용자 관리')
     .addTag('API/AUTH', '인증 관리')
