@@ -3,6 +3,7 @@
 Manufacturing Execution System (MES) 백엔드 API 서버입니다.
 
 - 배포 : https://mes-be-production.up.railway.app/
+- swagger api문서 : https://mes-be-production.up.railway.app/api
 
 ## 🚀 기술 스택
 
