@@ -38,7 +38,7 @@ import { InventoryStatusModule } from './api/inventory-status/inventory-status.m
       password: process.env.DB_PASSWORD || '1234',
       database: process.env.DB_DATABASE || 'mes-be',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: process.env.NODE_ENV !== 'production',
+      synchronize: true, // 프로덕션에서도 자동 테이블 생성 (포트폴리오용)
       logging: false,
     }),
     // AuthModule,
